@@ -1,0 +1,173 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+    background: #ededed;
+    margin: 0;
+    padding: 0;
+}
+
+#menu_wrap {
+    position: relative;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    padding-right: 10px;
+    width: 900px;
+    height: 40px;
+    list-style-type: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2)
+}
+
+.button a {
+    cursor: pointer;
+    text-align: center;
+    font: 13px/100% Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    position: relative;
+    min-width: 50px;
+    height: 20px;
+    float: left;
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .3)
+}
+
+.button:first-child a {
+    -webkit-border-top-left-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-topleft-radius: 10px;
+    -moz-border-bottomleft-radius: 10px;
+    border-top-left-radius: 10;
+    border-bottom-left-radius: 10px
+}
+
+.White, .White .button a {
+    color: #606060;
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+    border-right: 1px solid #e2e2e2;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #e2e2e2));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e2e2e2', GradientType=0);
+    background: linear-gradient(top, #ffffff 0%, #e2e2e2 100%);
+}
+
+.White .button a:hover, .White .button a:focus {
+    background: #ffffff;
+    border-right: solid 1px #e2e2e2;
+    background: -moz-linear-gradient(top, #ffffff 0%, #adadad 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #adadad));
+    background: -webkit-linear-gradient(top, #ffffff 0%, #adadad 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #adadad 100%);
+    background: -ms-linear-gradient(top, #ffffff 0%, #adadad 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#adadad', GradientType=0);
+    background: linear-gradient(top, #ffffff 0%, #adadad 100%);
+}
+
+.White .button a:active {
+    background: #ededed;
+    background: -moz-linear-gradient(top, #ededed 0%, #ffffff 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ededed), color-stop(100%, #ffffff));
+    background: -webkit-linear-gradient(top, #ededed 0%, #ffffff 100%);
+    background: -o-linear-gradient(top, #ededed 0%, #ffffff 100%);
+    background: -ms-linear-gradient(top, #ededed 0%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff', GradientType=0);
+    background: linear-gradient(top, #ededed 0%, #ffffff 100%);
+}
+
+.search {
+    position: relative;
+    float: right;
+    margin-top: 10px;
+}
+
+.search input[type=text] {
+    width: 120px;
+    height: 20px;
+    padding-left: 18px;
+    margin-left: 10px;
+    padding-right: 4px;
+    outline: none;
+    border: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -moz-box-shadow: inset 1px 1px 3px #7a7a7a;
+    box-shadow: inset 1px 1px 3px #7a7a7a;
+}
+
+.search a:before {
+    width: 6px;
+    height: 6px;
+    border: 2px solid #000;
+    background: transparent;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+}
+
+.search a:after {
+    left: 24px;
+    width: 2px;
+    height: 7px;
+    margin-top: 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+li a:before, li a:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 15px;
+}
+
+li a:before, li a:after {
+    margin: -7px 0 0;
+    background: #000;
+}
+
+/*Own CSS*/
+.centered{
+    position:absolute;
+    width:100px;
+    height:100px;
+    left:50%;
+    top:20%;
+    margin-left:-50px;
+    margin-top:-50px;
+}
+.divbody{
+    position: center;
+    width: 900px;
+    position: relative;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px 0 0;
+}

@@ -1,0 +1,43 @@
+<h2>Welcome to BioInformatics World!</h2>
+<br>
+
+<div class="divSol">
+  <div>
+    <table id="solTable" style="empty-cells: show; width: max-content; float: right;">
+      <tr>
+        <th colspan="2">&nbsp;</th>
+      </tr>
+      <tr>
+        <th colspan="2">&nbsp;</th>
+      </tr>
+      <% @sequpairmodel.seq1.each_char do |c| %>
+        <tr>
+          <td><%= c %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+<div class="divOrta">
+  <div>
+    <table id="mytable" style="float: left; table-layout: fixed">
+      <tr>
+        <th>&nbsp;</th>
+        <% @sequpairmodel.seq2.each_char do |c| %>
+          <th><%= c %></th>
+        <% end %>
+      </tr>
+    </table>
+    <table id="matrix" style="float: left; table-layout: fixed">
+      <% @matrixhtml.each do |r| %>
+        <tr>
+          <% r.each do |c| %>
+            <td>
+              <%= c.to_s %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>

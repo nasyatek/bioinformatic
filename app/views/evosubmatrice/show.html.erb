@@ -1,0 +1,12 @@
+<h1>Evolutionary Substitution Matrice:BLOSUM62</h1>
+<br>
+
+<table id="matrix" style="float: left; table-layout: fixed">
+  <% @matrixblosum62.each do |r| %>
+    <tr>
+      <% r.each do |c| %>
+        <td><%= c.to_s %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

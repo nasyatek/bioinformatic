@@ -1,0 +1,102 @@
+<div style="float: left; width: 90%">
+  <div style="text-align: center; width: content-box">
+    <p>
+      <strong>Evolutionary Substitution Matrice:</strong>
+      <%= @sequpair.mattype %>
+    </p>
+  </div>
+  <div style="float: left; width: 50%; text-align: center">
+    <p>
+      <strong>Seq1:</strong>
+      <%= @sequpair.seq1 %>
+    </p>
+  </div>
+  <div style="float: left; width: 50%; text-align: center">
+    <p>
+      <strong>Seq2:</strong>
+      <%= @sequpair.seq2 %>
+    </p>
+  </div>
+  <div style="text-align: center; width: content-box">
+    <p>
+      <strong>Result:</strong>
+      <%= @sequpair.result %>
+    </p>
+    <input type="button" value="ShowMeWay" onclick="getCellValues()" style="cursor:cell ">
+  </div>
+
+  <div class="centerDiv">
+    <div class="divSol">
+      <div>
+        <table id="solTable" style="empty-cells: show; width: max-content; float: right;">
+          <tr>
+            <th colspan="2">&nbsp;</th>
+          </tr>
+          <tr>
+            <th colspan="2">&nbsp;</th>
+          </tr>
+          <% @sequpair.seq1.each_char do |c| %>
+            <tr>
+              <td><%= c %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="divOrta">
+      <div>
+        <table id="mytable" style="float: left; table-layout: fixed">
+          <tr>
+            <th>&nbsp;</th>
+            <% @sequpair.seq2.each_char do |c| %>
+              <th><%= c %></th>
+            <% end %>
+          </tr>
+        </table>
+        <table id="matrix" style="float: left; table-layout: fixed">
+          <% @matrixhtml.each do |r| %>
+            <tr>
+              <% r.each do |c| %>
+                <td>
+                  <%= c.to_s %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center; width: content-box">
+    <br>
+    <p>SEQUENCE MATRIX BLOSUM62</p>
+    <table id="matrix" style="margin: 0 auto; table-layout: auto;width: max-content">
+      <% @matrixbloscore.each do |r| %>
+        <tr>
+          <% r.each do |c| %>
+            <td>
+              <%= c.to_s %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<div style="width: 10%; float: left">
+  <%= link_to 'Edit', edit_sequpair_path(@sequpair) %> |
+  <%= link_to 'Back', sequpairs_path %>
+
+</div>
+<script>
+    function getCellValues() {
+        var table = document.getElementById('matrix');
+        for (var r = 0, n = table.rows.length; r < n; r++) {
+            for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
+                if (r == 0 && c == 0) {
+                    alert(table.rows[r].cells[c].innerHTML);
+                    table.rows[r].cells[c].bgColor = "Yellow";
+                }
+            }
+        }
+    }
+</script>

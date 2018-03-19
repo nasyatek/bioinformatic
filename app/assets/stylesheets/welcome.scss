@@ -1,0 +1,47 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.centerDiv {
+  width: 80%;
+  height: 200px;
+  margin: 0 auto;
+  /*background-color: #FFA500;*/
+}
+
+.divSol {
+  width: 33%;
+  height: 200px;
+  /*background-color: #A52A2A; */
+  float: left;
+}
+
+.divOrta {
+  width: 34%;
+  height: 200px;
+  /*background-color: #FFA500;*/
+  float: left;
+}
+
+.divSag {
+  width: 33%;
+  height: 200px;
+  /*background-color: #008000;*/
+  float: left;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
