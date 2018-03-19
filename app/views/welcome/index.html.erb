@@ -1,4 +1,4 @@
-<h2>Welcome to BioInformatics World!</h2>
+<h3>Welcome to BioInformatics World!</h3>
 <br>
 
 <div class="divSol">
@@ -20,7 +20,7 @@
 </div>
 <div class="divOrta">
   <div>
-    <table id="mytable" style="float: left; table-layout: fixed">
+    <table id="mytable" style="float: left; table-layout: fixed;margin: 0px">
       <tr>
         <th>&nbsp;</th>
         <% @sequpairmodel.seq2.each_char do |c| %>
@@ -28,7 +28,7 @@
         <% end %>
       </tr>
     </table>
-    <table id="matrix" style="float: left; table-layout: fixed">
+    <table id="matrix" style="float: left; table-layout: fixed;margin: 0px">
       <% @matrixhtml.each do |r| %>
         <tr>
           <% r.each do |c| %>
