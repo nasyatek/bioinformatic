@@ -1,3 +1,3 @@
 class BionasCellObject
-  attr_accessor :i, :j, :value, :cell_type
+  attr_accessor :value, :cell_type
 end

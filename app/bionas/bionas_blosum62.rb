@@ -40,21 +40,26 @@ class BionasBlosum62
     mismatch = sequpairmodel.mismatch.to_i
     @firstrow = []
     (@sequence2.length + 1).times do |i|
-      @firstrow[i] = i * gap
+      biocell = BionasCellObject.new
+      biocell.value = i * gap
+      @firstrow[i] = biocell
     end
     @matrix_last.push(@firstrow)
     1.upto(@sequence1.length) do |i|
       next_row = []
-      next_row.push(i * gap)
+      biocell = BionasCellObject.new
+      biocell.value = i * gap
+      biocell.cell_type = "left"
+      next_row.push(biocell)
       1.upto(@sequence2.length) do |j|
-        valDiag = @matrix_last[(i - 1)][(j - 1)]
-        valUp = @matrix_last[(i - 1)][j]
-        valLeft = next_row[(j - 1)]
+        valDiag = @matrix_last[(i - 1)][(j - 1)].value
+        valUp = @matrix_last[(i - 1)][j].value
+        valLeft = next_row[(j - 1)].value
         a = @sequence1[i - 1]
         b = @sequence2[j - 1]
-        #puts "Cell: #{a}  #{b}  Left:#{valLeft}  Diag : #{valDiag}  Up: #{valUp}"
-        bestScore = best_value_for_cell(a, b, valLeft, valDiag, valUp)
-        next_row.push(bestScore)
+        biocell = BionasCellObject.new
+        biocell.value = best_value_for_cell(a, b, valLeft, valDiag, valUp)
+        next_row.push(biocell)
       end
       @matrix_last.push(next_row)
     end

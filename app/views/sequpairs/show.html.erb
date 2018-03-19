@@ -11,7 +11,7 @@
       </tr>
       <% @sequpair.seq1.each_char do |c| %>
         <tr>
-          <td><%= c %></td>
+          <td><strong><%= c %></strong></td>
         </tr>
       <% end %>
     </table>
@@ -29,7 +29,7 @@
       <tr>
         <% r.each do |c| %>
           <td>
-            <%= c.to_s %></td>
+            <%= c.value %></td>
         <% end %>
       </tr>
     <% end %>
@@ -68,7 +68,7 @@
             for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
                 if (r == 1 && c == 0) {
                     alert(table.rows[r].cells[c].innerHTML);
-                    table.rows[r].cells[c].bgColor = "Blue";
+                    table.rows[r].cells[c].bgColor = "Orange";
                 }
             }
         }
