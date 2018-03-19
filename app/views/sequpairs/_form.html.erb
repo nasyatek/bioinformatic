@@ -4,9 +4,9 @@
       <h2><%= pluralize(sequpair.errors.count, "error") %> prohibited this sequpair from being saved:</h2>
 
       <ul>
-      <% sequpair.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% sequpair.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -21,14 +21,15 @@
     <%= form.text_area :seq2, id: :sequpair_seq2 %>
   </div>
 
+
   <div class="field">
     <%= form.label :mattype %>
-    <%= form.text_field :mattype, id: :sequpair_mattype %>
+    <%= form.select :mattype, options_for_select(["BLOSUM62", "PAM"]) %>
   </div>
 
   <div class="field">
-    <%= form.label :result %>
-    <%= form.text_area :result, id: :sequpair_result %>
+    <%# form.label :result %>
+    <%= form.hidden_field :result, id: :sequpair_result %>
   </div>
 
   <div class="field">

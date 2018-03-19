@@ -18,16 +18,13 @@
   </div>
 </div>
 <div class="divOrta">
-  <div>
-    <table id="mytable" style="float: left; table-layout: fixed;margin: 0px">
+    <table id="matrix" style="float: left; table-layout: fixed;margin: 0px">
       <tr>
         <th>&nbsp;</th>
         <% @sequpairmodel.seq2.each_char do |c| %>
           <th><%= c %></th>
         <% end %>
       </tr>
-    </table>
-    <table id="matrix" style="float: left; table-layout: fixed;margin: 0px">
       <% @matrixhtml.each do |r| %>
         <tr>
           <% r.each do |c| %>
@@ -38,5 +35,4 @@
       <% end %>
     </table>
   </div>
-</div>
 </div>
