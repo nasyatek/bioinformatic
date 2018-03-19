@@ -171,3 +171,6 @@ li a:before, li a:after {
     margin-right: auto;
     padding: 0 10px 0 0;
 }
+.myp{
+    text-align: right;
+}

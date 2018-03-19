@@ -35,24 +35,30 @@
     <% end %>
   </table>
 </div>
-<div class="right">
-  <%= @sequpair.mattype %>
-  <p>
+<div class="divSol">
+  <div class="divSag">
+    <p>
+      <%= @sequpair.mattype %>
+    </p>
     <strong>Seq1:</strong>
-    <%= @sequpair.seq1 %>
-  </p>
-  <p>
+    <p>
+      <%= @sequpair.seq1 %>
+    </p>
     <strong>Seq2:</strong>
-    <%= @sequpair.seq2 %>
-  </p>
-  <p>
+    <p>
+      <%= @sequpair.seq2 %>
+    </p>
     <strong>Result:</strong>
-    <%= @sequpair.result %>
-  </p>
-  <input type="button" value="ShowMeWay" onclick="getCellValues()" style="cursor:cell ">
-  <div>
-    <%= link_to 'Edit', edit_sequpair_path(@sequpair) %> |
-    <%= link_to 'Back', sequpairs_path %>
+    <p>
+      <%= @sequpair.result %>
+    </p>
+    <input type="button" value="ShowMeWay" onclick="getCellValues()" style="cursor:cell ">
+    <br>
+    <br>
+    <div>
+      <%= link_to 'Edit', edit_sequpair_path(@sequpair) %> |
+      <%= link_to 'Back', sequpairs_path %>
+    </div>
   </div>
 </div>
 <script>
