@@ -66,9 +66,9 @@
         var table = document.getElementById('matrix');
         for (var r = 0, n = table.rows.length; r < n; r++) {
             for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-                if (r == 0 && c == 0) {
+                if (r == 1 && c == 0) {
                     alert(table.rows[r].cells[c].innerHTML);
-                    table.rows[r].cells[c].bgColor = "Yellow";
+                    table.rows[r].cells[c].bgColor = "Blue";
                 }
             }
         }

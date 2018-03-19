@@ -18,21 +18,21 @@
   </div>
 </div>
 <div class="divOrta">
-    <table id="matrix" style="float: left; table-layout: fixed;margin: 0px">
+  <table id="matrix" style="float: left; table-layout: fixed;margin: 0px">
+    <tr>
+      <th>&nbsp;</th>
+      <% @sequpairmodel.seq2.each_char do |c| %>
+        <th><%= c %></th>
+      <% end %>
+    </tr>
+    <% @matrixhtml.each do |r| %>
       <tr>
-        <th>&nbsp;</th>
-        <% @sequpairmodel.seq2.each_char do |c| %>
-          <th><%= c %></th>
+        <% r.each do |c| %>
+          <td>
+            <%= c %></td>
         <% end %>
       </tr>
-      <% @matrixhtml.each do |r| %>
-        <tr>
-          <% r.each do |c| %>
-            <td>
-              <%= c.to_s %></td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+    <% end %>
+  </table>
+</div>
 </div>
