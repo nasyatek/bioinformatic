@@ -33,6 +33,7 @@ class BionasBlosum62
   end
 
   def getHtmlMatrix(sequpairmodel)
+    @sequpairmodel = sequpairmodel
     @matrix_last = []
     @sequence1 = sequpairmodel.seq1
     @sequence2 = sequpairmodel.seq2
@@ -59,13 +60,12 @@ class BionasBlosum62
         b = @sequence2[j - 1]
         biocell = BionasCellObject.new
         biocell = best_value_for_cell(a, b, valLeft, valDiag, valUp, biocell)
-
-        puts "i: #{i} j:#{j} a:#{a} b:#{b} lookUpScore:#{lookup_score(a, b)} valLeft:#{valLeft} valDiag:#{valDiag} valup:#{valUp} bestValue:#{biocell.value}"
+        #puts "i: #{i} j:#{j} a:#{a} b:#{b} lookUpScore:#{lookup_score(a, b)} valLeft:#{valLeft} valDiag:#{valDiag} valup:#{valUp} bestValue:#{biocell.value}"
         next_row.push(biocell)
       end
       @matrix_last.push(next_row)
     end
-    find_best_path(@matrix_last)
+    find_best_path
     @matrix_last
   end
 
@@ -96,9 +96,28 @@ class BionasBlosum62
     biocell
   end
 
-  def find_best_path(matrix)
-    l = matrix.length
-    l.downto(0) do |i|
+  def find_best_path
+    vertical = @matrix_last.length - 1 # 3
+    horizon = @matrix_last[0].length - 1 # 4
+    sequst = @sequpairmodel.seq2.split('')
+    seqleft = @sequpairmodel.seq1.split('')
+    puts "vertical : #{vertical} #{horizon}"
+    puts "ust: #{sequst} yan: #{seqleft}"
+    vertical.downto(1) do |i|
+      puts "i,j:#{i},#{horizon} cell:#{@matrix_last[i][horizon].value}"
+      if @matrix_last[i][horizon].cell_type == 'LEFT'
+        @matrix_last[i][horizon].on_path = 1
+        seqleft.insert(i, '-')
+      end
+      if @matrix_last[i][horizon].cell_type == 'DIAG'
+        @matrix_last[i][horizon].on_path = 2
+      end
+      if @matrix_last[i][horizon].cell_type == 'UP'
+        @matrix_last[i][horizon].on_path = 3
+        sequst.insert(i, '-')
+      end
+      horizon -= 1
     end
+    puts "ust: #{sequst} yan: #{seqleft}"
   end
 end
