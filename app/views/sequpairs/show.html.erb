@@ -30,7 +30,7 @@
       <% @matrixhtml.each do |r| %>
         <tr>
           <% r.each do |c| %>
-            <td>
+            <td style="background-color: <%= 'yellow' if c.on_path != 0 %>">
               <%= c.value %></td>
           <% end %>
         </tr>
@@ -52,10 +52,11 @@
         <%= @sequpair.seq2 %>
       </p>
       <strong>Result:</strong>
-      <p>
-        <%= @sequpair.result %>
+      <p style="text-align: right">
+        <%= @sequpair.result.split(':')[0] %>
+        <br>
+        <%= @sequpair.result.split(':')[1] %>
       </p>
-      <input type="button" value="Cell Path" onclick="showBestPath()" style="cursor:default ">
       <br>
       <input type="button" value="Cell View" onclick="showCellType()" style="cursor:default ">
       <br>
@@ -95,7 +96,7 @@
       <% @matrixhtml.each do |r| %>
         <tr>
           <% r.each do |c| %>
-            <td>
+            <td style="background-color: <%= 'yellow' if c.on_path != 0 %>">
               <%= c.cell_type %></td>
           <% end %>
         </tr>

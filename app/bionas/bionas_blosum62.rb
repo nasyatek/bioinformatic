@@ -119,5 +119,7 @@ class BionasBlosum62
       horizon -= 1
     end
     puts "ust: #{sequst} yan: #{seqleft}"
+    @sequpairmodel.result = sequst.join.to_s + ':' + seqleft.join.to_s
+    @sequpairmodel
   end
 end
