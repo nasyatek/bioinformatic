@@ -13,14 +13,13 @@
 
   <div class="field">
     <%= form.label :seq1 %>
-    <%= form.text_area :seq1, id: :sequpair_seq1 %>
+    <%= form.text_area :seq1, id: :sequpair_seq1, autofocus: true %>
   </div>
 
   <div class="field">
     <%= form.label :seq2 %>
     <%= form.text_area :seq2, id: :sequpair_seq2 %>
   </div>
-
 
   <div class="field">
     <%= form.label :mattype %>
@@ -34,12 +33,12 @@
 
   <div class="field">
     <%= form.label :gap %>
-    <%= form.text_field :gap, id: :sequpair_gap %>
+    <%= form.number_field :gap, id: :sequpair_gap, value: -10 %>
   </div>
 
   <div class="field">
     <%= form.label :mismatch %>
-    <%= form.text_field :mismatch, id: :sequpair_mismatch %>
+    <%= form.number_field :mismatch, id: :sequpair_mismatch, value: -1 %>
   </div>
 
   <div class="actions">

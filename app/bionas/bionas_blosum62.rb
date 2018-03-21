@@ -58,7 +58,8 @@ class BionasBlosum62
         a = @sequence1[i - 1]
         b = @sequence2[j - 1]
         biocell = BionasCellObject.new
-        biocell.value = best_value_for_cell(a, b, valLeft, valDiag, valUp)
+        biocell.value = best_value_for_cell(a, b, valLeft, valDiag, valUp)[0]
+        biocell.cell_type = best_value_for_cell(a, b, valLeft, valDiag, valUp)[1]
         puts "i: #{i} j:#{j} a:#{a} b:#{b} lookUpScore:#{lookup_score(a, b)} valLeft:#{valLeft} valDiag:#{valDiag} valup:#{valUp} bestValue:#{biocell.value}"
         next_row.push(biocell)
       end
@@ -80,9 +81,18 @@ class BionasBlosum62
     qDiag = diag + lookup_score(a, b) # c(i-1, j-1)+lookup_score(a,b) !çarpraz
     qUp = up + gap # c(i-1, j) + gap  !yukarı
     qLeft = left + gap # c(i, j - 1) + gap  !sol
-    [qDiag, qUp, qLeft].max
-    puts "CELL:#{qDiag}  LEFT: #{left}    DIAG: #{diag}    UP: #{up} lookupScore : #{lookup_score(a,b)}"
-    qDiag
+    puts "CELL:#{qDiag}  LEFT: #{left}    DIAG: #{diag}    UP: #{up} lookupScore : #{lookup_score(a, b)}"
+    v = [qDiag, qUp, qLeft].max
+
+    case v
+      when qDiag
+        select = 'DIAG'
+      when qUp
+        select = 'UP'
+      when qLeft
+        select = 'LEFT'
+    end
+    [[qDiag, qUp, qLeft].max, select]
   end
 
 
