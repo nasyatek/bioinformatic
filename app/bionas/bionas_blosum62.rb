@@ -58,13 +58,14 @@ class BionasBlosum62
         a = @sequence1[i - 1]
         b = @sequence2[j - 1]
         biocell = BionasCellObject.new
-        biocell.value = best_value_for_cell(a, b, valLeft, valDiag, valUp)[0]
-        biocell.cell_type = best_value_for_cell(a, b, valLeft, valDiag, valUp)[1]
+        biocell = best_value_for_cell(a, b, valLeft, valDiag, valUp, biocell)
+
         puts "i: #{i} j:#{j} a:#{a} b:#{b} lookUpScore:#{lookup_score(a, b)} valLeft:#{valLeft} valDiag:#{valDiag} valup:#{valUp} bestValue:#{biocell.value}"
         next_row.push(biocell)
       end
       @matrix_last.push(next_row)
     end
+    find_best_path(@matrix_last)
     @matrix_last
   end
 
@@ -76,44 +77,28 @@ class BionasBlosum62
   # qLeft = C(i,j-1) + g
   # qResult = max(qDiag, qUp, qLeft)
 
-  def best_value_for_cell(a, b, left, diag, up)
+  def best_value_for_cell(a, b, left, diag, up, biocell)
     gap = -10
     qDiag = diag + lookup_score(a, b) # c(i-1, j-1)+lookup_score(a,b) !çarpraz
     qUp = up + gap # c(i-1, j) + gap  !yukarı
     qLeft = left + gap # c(i, j - 1) + gap  !sol
-    puts "CELL:#{qDiag}  LEFT: #{left}    DIAG: #{diag}    UP: #{up} lookupScore : #{lookup_score(a, b)}"
-    v = [qDiag, qUp, qLeft].max
-
-    case v
+    #puts "CELL:#{qDiag}  LEFT: #{left}    DIAG: #{diag}    UP: #{up} lookupScore : #{lookup_score(a, b)}"
+    biocell.value = [qDiag, qUp, qLeft].max
+    biocell.score = lookup_score(a, b)
+    case biocell.value
       when qDiag
-        select = 'DIAG'
+        biocell.cell_type = 'DIAG'
       when qUp
-        select = 'UP'
+        biocell.cell_type = 'UP'
       when qLeft
-        select = 'LEFT'
+        biocell.cell_type = 'LEFT'
     end
-    [[qDiag, qUp, qLeft].max, select]
+    biocell
   end
 
-
-  def getBloScore(sequpair)
-    @matrixblosum = []
-    @seq1 = sequpair.seq1
-    @seq2 = sequpair.seq2
-    row = @seq2.split('')
-    row.insert(0, " ")
-    @matrixblosum.push(row)
-    1.upto(@seq1.length) do |i|
-      next_row = []
-      next_row.push(@seq1[i - 1])
-      1.upto(@seq2.length) do |j|
-        a = @seq1[i - 1]
-        b = @seq2[j - 1]
-        bestScore = lookup_score(a, b)
-        next_row.push(bestScore)
-      end
-      @matrixblosum.push(next_row)
+  def find_best_path(matrix)
+    l = matrix.length
+    l.downto(0) do |i|
     end
-    @matrixblosum
   end
 end

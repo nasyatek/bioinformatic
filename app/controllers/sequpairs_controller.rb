@@ -13,7 +13,6 @@ class SequpairsController < ApplicationController
     @biosum62 = BionasBlosum62.new
     @biosum62.createMatris('blosum62')
     @matrixhtml = @biosum62.getHtmlMatrix(@sequpair)
-    @matrixbloscore = @biosum62.getBloScore(@sequpair)
     # puts "HTML MATRIS: #{@matrixhtml}"
   end
 
