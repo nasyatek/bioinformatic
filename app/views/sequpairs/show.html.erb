@@ -103,7 +103,12 @@
       </tbody>
     </table>
   </div>
+
 </div>
+<br>
+<br>
+<br>
+
 <script>
     function showBestPath() {
         var table = document.getElementById('matrix');
@@ -137,4 +142,24 @@
         divObject.style.display = "block";
     }
 </script>
-
+<!--
+<div style="alignment: center; float: right; width: 33%; position: absolute">
+  <table id="matrix22" style="float: left; table-layout: auto;margin: 0px;overflow: hidden">
+    <tr>
+      <th>&nbsp;</th>
+      <% @sequpair.seq2.each_char do |c| %>
+        <th><%= c %></th>
+      <% end %>
+    </tr>
+    <tbody id="tmatrisvalue22">
+    <% @matrixbloscore.each do |r| %>
+      <tr>
+        <% r.each do |c| %>
+          <td>
+            <%= c %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>-->
