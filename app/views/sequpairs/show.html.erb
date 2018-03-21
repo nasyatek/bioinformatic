@@ -1,76 +1,140 @@
 <h3><%= @sequpair.mattype %></h3>
 <br>
-<div class="divSol">
-  <div>
-    <table id="solTable" style="empty-cells: show; width: max-content; float: right;">
-      <tr>
-        <th colspan="2">&nbsp;</th>
-      </tr>
-      <tr>
-        <th colspan="2">&nbsp;</th>
-      </tr>
-      <% @sequpair.seq1.each_char do |c| %>
+<div>
+  <div class="divSol">
+    <div>
+      <table id="solTable" style="empty-cells: show; width: max-content; float: right;">
         <tr>
-          <td><strong><%= c %></strong></td>
+          <th colspan="2">&nbsp;</th>
+        </tr>
+        <tr>
+          <th colspan="2">&nbsp;</th>
+        </tr>
+        <% @sequpair.seq1.each_char do |c| %>
+          <tr>
+            <td><strong><%= c %></strong></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="divOrta">
+    <table id="matrix" style="float: left; table-layout: fixed;margin: 0px;overflow: hidden">
+      <tr>
+        <th>&nbsp;</th>
+        <% @sequpair.seq2.each_char do |c| %>
+          <th><%= c %></th>
+        <% end %>
+      </tr>
+      <tbody id="tmatrisvalue">
+      <% @matrixhtml.each do |r| %>
+        <tr>
+          <% r.each do |c| %>
+            <td>
+              <%= c.value %></td>
+          <% end %>
         </tr>
       <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="divSol">
+    <div class="divSag" style="height: 100vh;">
+      <p>
+        <%= @sequpair.mattype %>
+      </p>
+      <strong>Seq1:</strong>
+      <p>
+        <%= @sequpair.seq1 %>
+      </p>
+      <strong>Seq2:</strong>
+      <p>
+        <%= @sequpair.seq2 %>
+      </p>
+      <strong>Result:</strong>
+      <p>
+        <%= @sequpair.result %>
+      </p>
+      <input type="button" value="Cell Path" onclick="showBestPath()" style="cursor:default ">
+      <br>
+      <input type="button" value="Cell View" onclick="showCellType()" style="cursor:default ">
+      <br>
+      <br>
+      <div>
+        <%= link_to 'Edit', edit_sequpair_path(@sequpair) %> |
+        <%= link_to 'Back', sequpairs_path %>
+      </div>
+    </div>
+  </div>
+  <div class="divSol">
+    <div>
+      <table id="solTable2" style="empty-cells: show; width: max-content; float: right;">
+        <tr>
+          <th colspan="2">&nbsp;</th>
+        </tr>
+        <tr>
+          <th colspan="2">&nbsp;</th>
+        </tr>
+        <% @sequpair.seq1.each_char do |c| %>
+          <tr>
+            <td><strong><%= c %></strong></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="divOrta">
+    <table id="matrix2" style="float: left; table-layout: fixed;margin: 0px;overflow: hidden">
+      <tr>
+        <th>&nbsp;</th>
+        <% @sequpair.seq2.each_char do |c| %>
+          <th><%= c %></th>
+        <% end %>
+      </tr>
+      <tbody id="tmatrisvalue2">
+      <% @matrixhtml.each do |r| %>
+        <tr>
+          <% r.each do |c| %>
+            <td>
+              <%= c.cell_type %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </tbody>
     </table>
   </div>
 </div>
-<div class="divOrta">
-  <table id="matrix" style="float: left; table-layout: fixed;margin: 0px">
-    <tr>
-      <th>&nbsp;</th>
-      <% @sequpair.seq2.each_char do |c| %>
-        <th><%= c %></th>
-      <% end %>
-    </tr>
-    <% @matrixhtml.each do |r| %>
-      <tr>
-        <% r.each do |c| %>
-          <td>
-            <%= c.value %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
-</div>
-<div class="divSol">
-  <div class="divSag">
-    <p>
-      <%= @sequpair.mattype %>
-    </p>
-    <strong>Seq1:</strong>
-    <p>
-      <%= @sequpair.seq1 %>
-    </p>
-    <strong>Seq2:</strong>
-    <p>
-      <%= @sequpair.seq2 %>
-    </p>
-    <strong>Result:</strong>
-    <p>
-      <%= @sequpair.result %>
-    </p>
-    <input type="button" value="ShowMeWay" onclick="getCellValues()" style="cursor:cell ">
-    <br>
-    <br>
-    <div>
-      <%= link_to 'Edit', edit_sequpair_path(@sequpair) %> |
-      <%= link_to 'Back', sequpairs_path %>
-    </div>
-  </div>
-</div>
 <script>
-    function getCellValues() {
+    function showBestPath() {
         var table = document.getElementById('matrix');
         for (var r = 0, n = table.rows.length; r < n; r++) {
             for (var c = 0, m = table.rows[r].cells.length; c < m; c++) {
-                if (r == 1 && c == 0) {
-                    alert(table.rows[r].cells[c].innerHTML);
+                if (r > 0 && r == c) {
+                    //alert(table.rows[r].cells[c].innerHTML);
                     table.rows[r].cells[c].bgColor = "Orange";
                 }
             }
         }
     }
+
+    function showCellType() {
+        if (document.getElementById('tmatriscelltype').style.display == 'none') {
+            show('tmatriscelltype')
+            hide('tmatrisvalue')
+        } else {
+            hide('tmatriscelltype')
+            show('tmatrisvalue')
+        }
+    }
+
+    function hide(id) {
+        var divObject = document.getElementById(id);
+        divObject.style.display = "none";
+    }
+
+    function show(id) {
+        var divObject = document.getElementById(id);
+        divObject.style.display = "block";
+    }
 </script>
+

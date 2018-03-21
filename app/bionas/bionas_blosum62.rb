@@ -49,7 +49,7 @@ class BionasBlosum62
       next_row = []
       biocell = BionasCellObject.new
       biocell.value = i * gap
-      biocell.cell_type = "left"
+      biocell.cell_type = 'LEFT'
       next_row.push(biocell)
       1.upto(@sequence2.length) do |j|
         valDiag = @matrix_last[(i - 1)][(j - 1)].value
@@ -59,6 +59,7 @@ class BionasBlosum62
         b = @sequence2[j - 1]
         biocell = BionasCellObject.new
         biocell.value = best_value_for_cell(a, b, valLeft, valDiag, valUp)
+        puts "i: #{i} j:#{j} a:#{a} b:#{b} lookUpScore:#{lookup_score(a, b)} valLeft:#{valLeft} valDiag:#{valDiag} valup:#{valUp} bestValue:#{biocell.value}"
         next_row.push(biocell)
       end
       @matrix_last.push(next_row)
@@ -80,7 +81,7 @@ class BionasBlosum62
     qUp = up + gap # c(i-1, j) + gap  !yukarı
     qLeft = left + gap # c(i, j - 1) + gap  !sol
     [qDiag, qUp, qLeft].max
-    puts "CELL:#{qDiag}  LEFT: #{left}    DIAG: #{diag}    UP: #{up}"
+    puts "CELL:#{qDiag}  LEFT: #{left}    DIAG: #{diag}    UP: #{up} lookupScore : #{lookup_score(a,b)}"
     qDiag
   end
 
