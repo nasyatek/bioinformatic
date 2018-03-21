@@ -45,6 +45,7 @@ class BionasBlosum62
       biocell.value = i * gap
       @firstrow[i] = biocell
     end
+    @firstrow[0].cell_type = 'DONE'
     @matrix_last.push(@firstrow)
     1.upto(@sequence1.length) do |i|
       next_row = []
