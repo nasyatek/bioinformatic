@@ -1,3 +1,5 @@
+# Blosum62 matrisini html sayfada göstermek için 2 boyutlu dizi elde eder.
+
 class EvoMatrices
   def self.getBlosum62 (filename)
     puts "File name : #{filename}"
